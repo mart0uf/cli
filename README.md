@@ -3,13 +3,16 @@ The idea of creating a CLI(Command Line Interface) has been in my mind for a lon
 
 # Features 
 1. Processing of incoming commands and arguments.
-2. Support for the history of previously launched commands.
-3. When you press the Tab key, autocomplete occurs. CLI completes as much of the name as possible.
-4. The cursor can now be moved with arrows on the keyboard.
-5. Implemented handling of deletion using the 'Backspace' key and the 'Delete' key.
-6. If the command crashes and returns a value other than zero, the CLI will report it.
-7. The `console.h` header file contains the commands needed to configure the terminal in the design.
-8. The CLI can be easily ported to any system, you just need to change the functions of sending and receiving a symbol.
+   ![2024-04-30 10-22-59 (online-video-cutter com)(3)](https://github.com/mart0uf/cli/assets/104390290/1ef5d4a7-6507-4bf3-8e49-8135fc252278)
+3. Support for the history of previously launched commands.
+4. When you press the Tab key, autocomplete occurs. CLI completes as much of the name as possible.
+   ![2024-04-30 10-22-59 (online-video-cutter com)(1)(1)](https://github.com/mart0uf/cli/assets/104390290/a9ac9742-e0c4-49b7-8fe1-c4f4a122bfd4)
+6. The cursor can now be moved with arrows on the keyboard.
+   ![2024-04-30 10-22-59 (online-video-cutter com)(2)(1)](https://github.com/mart0uf/cli/assets/104390290/c5c584d0-fbe2-4ef7-8f3d-8b75c39c4e1b)
+8. Implemented handling of deletion using the 'Backspace' key and the 'Delete' key.
+9. If the command crashes and returns a value other than zero, the CLI will report it.
+10. The `console.h` header file contains the commands needed to configure the terminal in the design.
+11. The CLI can be easily ported to any system, you just need to change the functions of sending and receiving a symbol.
 
 # Configuring the CLI
 The main configuration of the CLI is done in the `opt.h` file.
