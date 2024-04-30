@@ -36,7 +36,7 @@ SOFTWARE.
 #if (CLI_FOR_STM32_HAL == TRUE)
 #include "main.h"
 #include "usart.h"
-/* Parameter */
+/* Parameter */	
 #define CLI_UART huart1
 
 int __io_cli_putchar(int ch) {
@@ -53,40 +53,11 @@ int __io_cli_getchar(void) {
 
 #endif
 
-/* For CMSIS STM32 */
-#if (CLI_FOR_STM32_CMSIS == TRUE)
-#include "main.h"
-#define CLI_UART USART1
-int __io_cli_putchar(int ch) {
-	while(1) {
-		if (READ_BIT(CLI_UART->CR1, USART_CR1_TE)) {
-			if ((CLI_UART->ISR & UART_FLAG_TXE)) {
-				CLI_UART->TDR = ch;
-				return 0;
-			}
-		}
-	}
-	return 0;
-
-}
-
-int __io_cli_getchar(void) {
-	int ch = 0;
-	if (READ_BIT(CLI_UART->CR1, USART_CR1_RE)) {
-		if ((CLI_UART->ISR & USART_ISR_RXNE)) {
-			ch = (int)CLI_UART->RDR;
-		}
-	}
-	return ch;
-}
-#endif
-
 /* For ZYNQ  */
 #if (CLI_FOR_ZYNQ == TRUE)
+/* Parameter */	
 #include "xuartps_hw.h"
-XUartPs_Config *Config_UART;
-XUartPs UART_PS;
-u32 BaseAddress = SHELL_STDIO_BASEADDRESS;
+u32 BaseAddress = STDIN_BASEADDRESS;
 
 int __io_cli_putchar(int ch) {
 	while (XUartPs_IsTransmitFull(BaseAddress));
