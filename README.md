@@ -11,8 +11,9 @@ The idea of creating a CLI(Command Line Interface) has been in my mind for a lon
    ![2024-04-30 10-22-59 (online-video-cutter com)(2)(1)](https://github.com/mart0uf/cli/assets/104390290/c5c584d0-fbe2-4ef7-8f3d-8b75c39c4e1b)
 8. Implemented handling of deletion using the 'Backspace' key and the 'Delete' key.
 9. If the command crashes and returns a value other than zero, the CLI will report it.
-10. The `console.h` header file contains the commands needed to configure the terminal in the design.
-11. The CLI can be easily ported to any system, you just need to change the functions of sending and receiving a symbol.
+    ![2024-04-27 15-08-06 (online-video-cutter com) (online-video-cutter com)(2)](https://github.com/mart0uf/cli/assets/104390290/1874d858-acfb-48a6-892a-7c3ebfd9d7d6)
+11. The `console.h` header file contains the commands needed to configure the terminal in the design.
+12. The CLI can be easily ported to any system, you just need to change the functions of sending and receiving a symbol.
 
 # Configuring the CLI
 The main configuration of the CLI is done in the `opt.h` file.
