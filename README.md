@@ -63,12 +63,12 @@ int __io_cli_getchar(void) {
 # Use of ready-made solutions
 
 ## For STM32
-It is necessary to set the 'CLI_FOR_STM32_HAL' flag to 'TRUE', the 'CLI_CUSTOM_IO' flag to 'FALSE'  (In the 'opt.h' file). In the 'io.c' file, find the line:
+It is necessary to set the `CLI_FOR_STM32_HAL` flag to `TRUE`, the `CLI_CUSTOM_IO` flag to `FALSE`  (In the `opt.h` file). In the `io.c` file, find the line:
 ```c
 /* Parameter */	
 #define CLI_UART huart1
 ```
-Replace the handle 'huart' ('UART_HandleTypeDef') with the one you want.
+Replace the handle `huart` (`UART_HandleTypeDef`) with the one you want.
 
 
 ## For Zynq
@@ -96,5 +96,26 @@ while(1) {
 }
 ```
 
+# Additional Features
+If you use the `CLI_ENABLE_DELETE_COMMAND` flag, you can remove functions from the CLI during the execution of commands. Functions can be deleted by ID (`cli_remove_id()`), name (`cli_remove_name()`), or function pointer (`cli_remove_ptr()`).
 
+You can override the CLI write and read functions while the program is running. To do this, you need to assign these functions after initialization.
+```c
+cli_init(&cli0);
+cli0._io_getchar = __io_getchar;
+cli0._io_putchar = __io_putchar;
+```
+
+You can also initialize multiple CLI instances. To do this, you just need to declare them:
+```c
+cli_t cli1;
+cli_init(&cli1);
+...
+```
+
+# Programs on which the CLI runs
+Command Line Interpreter was tested on `PuTTY` and `TeraTerm`. I can't guarantee stable performance in other programs. But I'd love for you to give me feedback.
+
+# Next steps
+I consider the further development of CLI in this context to be complete. What has now been implemented is quite enough for comfortable work. If there are any interesting development ideas, please let me know. If you find an error, please let us know.
 
