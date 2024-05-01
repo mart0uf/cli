@@ -72,7 +72,7 @@ Replace the handle `huart` (`UART_HandleTypeDef`) with the one you want.
 
 
 ## For Zynq
-It is necessary to set the `CLI_FOR_ZYNQ` flag to `TRUE`, the `CLI_CUSTOM_IO` flag to `FALSE`  (In the `opt.h` file). In the 'io.c' file, find the line:
+It is necessary to set the `CLI_FOR_ZYNQ` flag to `TRUE`, the `CLI_CUSTOM_IO` flag to `FALSE`  (In the `opt.h` file). In the `io.c` file, find the line:
 ```c
 /* Parameter */	
 #include "xuartps_hw.h"
