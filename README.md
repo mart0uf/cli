@@ -32,7 +32,7 @@ The main configuration of the CLI is done in the `opt.h` file.
 - Parameter `CLI_EXAMPLE_ENABLE` - Include sample functions for the CLI.
 
 # Porting
-You must set the 'CLI_CUSTOM_IO' flag to 'TRUE'. (In the 'opt.h' file). For porting, you need to define the functions '__io_cli_putchar(int ch)' and '__io_cli_getchar(void)'. Example of CLI connection using CMSIS for STM32:
+You must set the `CLI_CUSTOM_IO` flag to `TRUE`. (In the `opt.h` file). For porting, you need to define the functions `__io_cli_putchar(int ch)` and `__io_cli_getchar(void)`. Example of CLI connection using CMSIS for STM32:
 ```c
 /* This CMSIS is valid for STM32F1xx. */
 #include "main.h"
@@ -72,7 +72,7 @@ Replace the handle `huart` (`UART_HandleTypeDef`) with the one you want.
 
 
 ## For Zynq
-It is necessary to set the 'CLI_FOR_ZYNQ' flag to 'TRUE', the 'CLI_CUSTOM_IO' flag to 'FALSE'  (In the 'opt.h' file). In the 'io.c' file, find the line:
+It is necessary to set the `CLI_FOR_ZYNQ` flag to `TRUE`, the `CLI_CUSTOM_IO` flag to `FALSE`  (In the `opt.h` file). In the 'io.c' file, find the line:
 ```c
 /* Parameter */	
 #include "xuartps_hw.h"
@@ -86,9 +86,9 @@ Change `BaseAddress` the address to the one you want.
 cli_init(&cli0);
 
 /* Define and add the features needed to work in the CLI. */
-cli_add(cli, "example", cli_function_example, "Example command");
-cli_add(cli, "read_buffer", cli_function_read_buffer, "Read from test buffer");
-cli_add(cli, "write_buffer", cli_function_write_buffer, "Write to test buffer");
+cli_add(&cli0, "example", cli_function_example, "Example command");
+cli_add(&cli0, "read_buffer", cli_function_read_buffer, "Read from test buffer");
+cli_add(&cli0, "write_buffer", cli_function_write_buffer, "Write to test buffer");
 
 /* In the main loop, call the function. */
 while(1) {
