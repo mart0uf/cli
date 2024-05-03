@@ -38,26 +38,25 @@ You must set the `CLI_CUSTOM_IO` flag to `TRUE`. (In the `opt.h` file). For port
 #include "main.h"
 #define CLI_UART USART1
 int __io_cli_putchar(int ch) {
-	while(1) {
-		if (READ_BIT(CLI_UART->CR1, USART_CR1_TE)) {
-			if ((CLI_UART->ISR & UART_FLAG_TXE)) {
-				CLI_UART->TDR = ch;
-				return 0;
-			}
-		}
-	}
-	return 0;
-
+   while(1) {
+      if (READ_BIT(CLI_UART->CR1, USART_CR1_TE)) {
+         if ((CLI_UART->ISR & UART_FLAG_TXE)) {
+            CLI_UART->TDR = ch;
+            return 0;
+         }
+      }
+   }
+   return 0;
 }
 
 int __io_cli_getchar(void) {
-	int ch = 0;
-	if (READ_BIT(CLI_UART->CR1, USART_CR1_RE)) {
-		if ((CLI_UART->ISR & USART_ISR_RXNE)) {
-			ch = (int)CLI_UART->RDR;
-		}
-	}
-	return ch;
+   int ch = 0;
+   if (READ_BIT(CLI_UART->CR1, USART_CR1_RE)) {
+      if ((CLI_UART->ISR & USART_ISR_RXNE)) {
+         ch = (int)CLI_UART->RDR;
+      }
+   }
+   return ch;
 }
 ```
 # Use of ready-made solutions
